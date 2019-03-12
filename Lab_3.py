@@ -97,26 +97,24 @@ def FindAndPrint(T,k):
 ######################################################################################
         
         
-#search module to  search an  item  and print if it is found      
+#search module to  search an  item  return the item or -1 if not found    
 def search(T,k):
     #save the tree into a temperary node
     temp = T
     #if the tree is empty return it is empty
     if T is None:
-        print('tree is empty')
-        return 
+        return None
     #while loop to traverse tree
     while temp is not None:
-        #if the item is found return and print
+        #if the item is found return the item
         if(temp.item ==k):
-            print('Searched',k,':was found')
-            return
+            return temp.item
         #if not then check that current item to see whether to go right or left
         if k< temp.item:
             temp = temp.left
         else:
             temp = temp.right
-    print('Searched',k,':Number Not Found')
+    return -1
     
 
 #builds a tree of a sorted list and returns list
@@ -243,8 +241,17 @@ print()
 InOrderD(T,'')
 print()
 
+if(search(T,200)==-1):
+    print('item not found')
+else:
+    print(search(T,200),'was found')
 
-search(T,30)
+if(search(T,30)==-1):
+    print('item not found')
+else:
+    print(search(T,30),'was found')
+
+
 print()
 
 L = [1,2,3,4,5,6,7,8,9,10]
