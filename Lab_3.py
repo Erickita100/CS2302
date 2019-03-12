@@ -135,6 +135,8 @@ def buildtree(L):
 
 #extract the items of a tree into a list
 def extract(T, newlist):
+    if T == None:
+        return
     #if there is a left item  recursive call the left
     if T.left is not  None:
         extract(T.left,newlist);
@@ -185,7 +187,7 @@ def tree(ax,n,w,p,size,height,x1,x2,x3,oldy,newY):
         tree(ax,n-1,w,p,x,height,x3-x,x3,x3+x,newY,newY-y)
         #draw a circle in the middle point
         draw_circles(ax,1,[x2,oldy],(80),w)
-#mrthod to get the center and radius of the circles
+#method to get the center and radius of the circles
 def circle(center,rad):
     n = int(4*rad*math.pi)
     t = np.linspace(0,6.3,n)
@@ -197,12 +199,17 @@ def circle(center,rad):
 def draw_circles(ax,n,center,radius,w):
     if n>0:
         #in each each circle the numbers of the tree will be plotted
+        #xs is the x coordinates
         xs=[400,0,800,-200,200,600,1000,-350,-100,100,300]
+        #ys is the y coordinates
         ys=[400,0,0,-400,-400,-400,-400,-600,-600,-600,-600]
+        #t is the values to be printed
         t= [10,4,15,2,8,12,18,1,3,5,9,7]
+        #keeps track of which value in t to be printed
         counter = 0
+        #for loop to run in buth xs and ys
         for x, y, in zip(xs,ys):
-            
+            #plot the text at the x and y coordinate and value of counter in t
             plt.text(x,y,str(t[counter]),color='k', fontsize=12)
             counter+=1
         a,b = circle(center,radius)
